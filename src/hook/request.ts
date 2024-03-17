@@ -20,9 +20,10 @@ uni.addInterceptor('request', {
 
     options.header = {
       ...options.header,
-      sourceType: 'wx',
-      Authorization: token
+      sourceType: 'wx'
     }
+
+    if (token) Object.assign(options.header, { Authorization: token })
   },
   fail(err) {
     console.log('interceptor-fail', err)
